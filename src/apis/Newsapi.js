@@ -1,3 +1,4 @@
+import conf from "../global-configs/conf"
 
 export class Service{
     
@@ -7,7 +8,7 @@ export class Service{
         const options = {
             method: 'GET',
             headers: {
-                'x-rapidapi-key': '',
+                'x-rapidapi-key': conf.newsapikey,
                 'x-rapidapi-host': 'news-api14.p.rapidapi.com'
             }
         };
