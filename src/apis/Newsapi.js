@@ -1,27 +1,20 @@
-import conf from "../global-configs/conf"
+import conf from "../global-configs/conf";
 
-export class Service{
-    
-    async globalNews()
-    {
-        const url = 'https://news-api14.p.rapidapi.com/v2/search/articles?query=india&language=en';
-        const options = {
-            method: 'GET',
-            headers: {
-                'x-rapidapi-key': conf.newsapikey,
-                'x-rapidapi-host': 'news-api14.p.rapidapi.com'
-            }
-        };
+export class Service {
+    async globalNews() {
+        const url = 'https://gnews.io/api/v4/search?q=general&lang=en&country=in&max=10&apikey=' + conf.newsapikey;
+
         try {
-            const response = await fetch(url, options);
-            const result = await response.json();
-            console.log(`news: ${result.data[0].title}`)
-            return result.data
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+            const data = await res.json();
+            console.log(data.articles)
+            return data.articles
         } catch (error) {
-            console.error(error);
+            console.error(`Error while fetching: ${error}`);
         }
     }
 }
 
-const newsService = new Service;
+const newsService = new Service();
 export default newsService;

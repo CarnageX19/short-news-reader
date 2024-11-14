@@ -24,9 +24,9 @@ function NewsPanel() {
                 <Card 
                     key={index}
                     title={item.title}
-                    photo_url={item.thumbnail}
+                    photo_url={item.image}
                     link={item.url}
-                    snippet={item.excerpt}
+                    snippet={item.description}
                 />
             ))}
             {itemsToShow < news.length && (  //if itemsToShow reaches total news limit, hide loadmore button
