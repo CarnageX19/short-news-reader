@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import newsService from "../apis/Newsapi";
 import Card from "./Card";
+import Menu from "./Menu";
 
-function NewsPanel() {
+function NewsPanel({category="general"}) {
     const [news, setNews] = useState([]);
     const [itemsToShow, setItemsToShow] = useState(4); // Show 4 items initially
 
     useEffect(() => {
         const fetchData = async () => {
-            const newsData = await newsService.globalNews();
+            const newsData = await newsService.globalNews(category);
             setNews(newsData);
         };
         fetchData();
@@ -20,6 +21,7 @@ function NewsPanel() {
 
     return (
         <>  
+        <Menu/>
             {news.slice(0, itemsToShow).map((item, index) => (
                 <Card 
                     key={index}

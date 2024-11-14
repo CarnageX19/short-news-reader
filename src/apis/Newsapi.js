@@ -1,8 +1,8 @@
 import conf from "../global-configs/conf";
 
 export class Service {
-    async globalNews() {
-        const url = 'https://gnews.io/api/v4/search?q=general&lang=en&country=in&max=10&apikey=' + conf.newsapikey;
+    async globalNews(category) {
+        const url = 'https://gnews.io/api/v4/search?q='+category+'&lang=en&country=in&max=10&apikey=' + conf.newsapikey;
 
         try {
             const res = await fetch(url);
