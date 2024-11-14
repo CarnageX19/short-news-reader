@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import './App.css'
-import Header from './components'
+import {Header, NewsPanel} from './components'
 
 function App() {
   return (
     <>
       <Header />
+      <NewsPanel />
     </>
   )
 }
