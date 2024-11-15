@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import newsService from "../apis/Newsapi";
 import Card from "./Card";
+import Viewer from "./Viewer";
 
 function NewsPanel({category="general"}) {
     const [news, setNews] = useState([]);
     const [itemsToShow, setItemsToShow] = useState(4); // Show 4 items initially
+    const [selectedItem, setSelectedItem] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,8 +20,21 @@ function NewsPanel({category="general"}) {
         setItemsToShow(prev => prev + 4)
     };
 
-    return (
-        <>  
+    const onViewDetails = (article) =>{
+        setSelectedItem(article)
+    }
+
+    const onClose = () => {
+        setSelectedItem(null);
+    };
+
+    return (  
+        <div className="flex h-screen">
+        <div
+        className={`transition-all duration-300 ease-in-out ${
+            selectedItem ? "w-2/3" : "w-full"
+        } overflow-y-auto`}
+        >
             {news.slice(0, itemsToShow).map((item, index) => (
                 <Card 
                     key={index}
@@ -27,6 +42,8 @@ function NewsPanel({category="general"}) {
                     photo_url={item.image}
                     link={item.url}
                     snippet={item.description}
+                    content={item.content}
+                    onViewDetails={onViewDetails}
                 />
             ))}
             {itemsToShow < news.length && (  //if itemsToShow reaches total news limit, hide loadmore button
@@ -39,7 +56,19 @@ function NewsPanel({category="general"}) {
                     </button>
                 </div>
             )}
-        </>
+        </div>
+            {selectedItem && //Viewer will not be rendered if selectedItem is null
+            <div className="w-1/3 bg-white shadow-lg">
+                <Viewer 
+                    title={selectedItem.title}
+                    photo_url={selectedItem.photo_url}
+                    description={selectedItem.snippet} 
+                    content={selectedItem.content} 
+                    url={selectedItem.link}
+                    onClose={onClose}
+                />
+            </div>}
+        </div>
     );
 }
 
