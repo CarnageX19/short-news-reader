@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import newsService from "../apis/Newsapi";
 import Card from "./Card";
-import Menu from "./Menu";
 
 function NewsPanel({category="general"}) {
     const [news, setNews] = useState([]);
@@ -16,12 +15,11 @@ function NewsPanel({category="general"}) {
     }, []);
 
     const handleLoadMore = () => {
-        setItemsToShow(prev => prev + 4); // add 4 more items on the display
+        setItemsToShow(prev => prev + 4)
     };
 
     return (
         <>  
-        <Menu/>
             {news.slice(0, itemsToShow).map((item, index) => (
                 <Card 
                     key={index}
