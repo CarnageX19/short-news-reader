@@ -12,7 +12,7 @@ function NewsPanel({category="general"}) {
             setNews(newsData);
         };
         fetchData();
-    }, []);
+    }, [category]);
 
     const handleLoadMore = () => {
         setItemsToShow(prev => prev + 4)

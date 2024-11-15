@@ -1,10 +1,10 @@
 import React from "react";
 import Menu from "./Menu";
 
-function Header({ toggleNavBar }) {
+function Header({ toggleSidebar=false }) {
     return (
         <header className="bg-white shadow-md py-4 px-6 flex items-center justify-between">
-            <Menu toggleNavBar={toggleNavBar} />
+            <Menu toggleSidebar={toggleSidebar} />
             <h1 className="text-2xl font-bold">News App</h1>
         </header>
     );
