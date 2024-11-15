@@ -2,6 +2,7 @@
 
 A simple news app that fetches the latest news from [NewsAPI](https://newsapi.org/) based on categories.
 
+![DEMO](demo.gif)
 
 
 ## Features
