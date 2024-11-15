@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import Header from "./header";
 import Sidebar from "./Sidebar";
 import Viewer from "./Viewer";
+import Footer from "./Footer";
 
 export{
     Header,
@@ -11,5 +12,6 @@ export{
     Card,
     Menu,
     Sidebar,
-    Viewer
+    Viewer,
+    Footer
 }

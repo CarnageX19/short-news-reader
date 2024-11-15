@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import {Header, NewsPanel, Sidebar} from './components'
+import {Footer, Header, NewsPanel, Sidebar} from './components'
 
 function App() {
   
@@ -23,6 +23,7 @@ function App() {
       <Header toggleSidebar={toggleSidebar}/>
       <Sidebar isVisible={isSidebarVisible} toggleSidebar={toggleSidebar} changeCategory={changeCategory}/>
       <NewsPanel category={category}/>
+      <Footer />
     </>
   )
 }
