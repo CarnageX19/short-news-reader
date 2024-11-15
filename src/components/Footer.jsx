@@ -17,7 +17,7 @@ function Footer() {
         <div className="text-sm">
           <span>Created by <strong>Aritra Kumar Dutta</strong></span> 
           <a
-            href="https://github.com/yourgithubusername"
+            href="https://github.com/CarnageX19/short-news-reader"
             target="_blank"
             className="ml-2 text-blue-500 hover:underline"
           >
