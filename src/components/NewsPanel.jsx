@@ -29,7 +29,7 @@ function NewsPanel({category="general"}) {
     };
 
     return (  
-        <div className="flex h-screen">
+        <div className="flex h-screen z-10">
         <div
         className={`transition-all duration-300 ease-in-out ${
             selectedItem ? "w-2/3" : "w-full"
